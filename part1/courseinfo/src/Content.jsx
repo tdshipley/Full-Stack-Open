@@ -1,9 +1,11 @@
+import Part from './Part'
+
 const Content = (props) => {
     return (
         <>
             {
-                props.courses.map((course) => (
-                    <p key={course.id}>{course.partname} {course.exercises}</p>
+                props.course.parts.map((part) => (
+                    <Part key={part.id} part={part} />
                 ))
             }
         </>

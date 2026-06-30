@@ -1,7 +1,7 @@
 const Total = (props) => {
 
-    const count = props.courses.reduce(
-        (accumulator, course) => accumulator + course.exercises, 0
+    const count = props.course.parts.reduce(
+        (accumulator, part) => accumulator + part.exercises, 0
     )
 
     return (
