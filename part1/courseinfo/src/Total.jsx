@@ -1,6 +1,6 @@
-const Total = (props) => {
+const Total = ({course}) => {
 
-    const count = props.course.parts.reduce(
+    const count = course.parts.reduce(
         (accumulator, part) => accumulator + part.exercises, 0
     )
 
