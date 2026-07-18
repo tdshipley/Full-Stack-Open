@@ -1,6 +1,29 @@
 import { useState } from 'react'
 import Button from './Button'
 
+const Statistics = ({good, neutral, bad, allFeedback}) => {
+
+  const getAverageFeedbackScore = () => {
+    return (good + -bad) / allFeedback || 0
+  }
+
+  const getPositiveFeedbackPercentage = () => {
+    return good / allFeedback * 100 || 0
+  }
+
+  return (
+    <div>
+      <h2>statistics</h2>
+        <p>good {good}</p>
+        <p>neutral {neutral}</p>
+        <p>bad {bad}</p>
+        <p>all {allFeedback}</p>
+        <p>average {getAverageFeedbackScore()}</p>
+        <p>positive {getPositiveFeedbackPercentage()}%</p>
+    </div>
+  )
+}
+
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
@@ -24,14 +47,6 @@ const App = () => {
     setAllFeedback(allFeedback + 1)
   }
 
-  const getAverageFeedbackScore = () => {
-    return (good + -bad) / allFeedback
-  }
-
-  const getPositiveFeedbackPercentage = () => {
-    return good / allFeedback * 100
-  }
-
   return (
     <div>
       <h2>give feedback</h2>
@@ -39,12 +54,7 @@ const App = () => {
         <Button onClick={handleNeutralClick} text="neutral" />
         <Button onClick={handleBadClick} text="bad" />
       <h2>statistics</h2>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <p>all {allFeedback}</p>
-        <p>average {getAverageFeedbackScore()}</p>
-        <p>positive {getPositiveFeedbackPercentage()}%</p>
+        <Statistics good={good} neutral={neutral} bad={bad} allFeedback={allFeedback} />
     </div>
   )
 }
