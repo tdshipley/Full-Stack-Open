@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import Button from './Button'
 
+const StatisticsLine = ({name, value}) => {
+  return (
+    <p>{name} {value}</p>
+  )
+}
+
 const Statistics = ({good, neutral, bad, allFeedback}) => {
 
   if(allFeedback == 0) {
@@ -23,12 +29,12 @@ const Statistics = ({good, neutral, bad, allFeedback}) => {
   return (
     <div>
       <h2>statistics</h2>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <p>all {allFeedback}</p>
-        <p>average {getAverageFeedbackScore()}</p>
-        <p>positive {getPositiveFeedbackPercentage()}%</p>
+        <StatisticsLine name="good" value={good} />
+        <StatisticsLine name="neutral" value={neutral} />
+        <StatisticsLine name="bad" value={bad} />
+        <StatisticsLine name="all" value={allFeedback} />
+        <StatisticsLine name="average" value={getAverageFeedbackScore()} />
+        <StatisticsLine name="positive" value={getPositiveFeedbackPercentage()} />
     </div>
   )
 }
