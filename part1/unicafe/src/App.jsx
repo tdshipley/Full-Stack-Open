@@ -3,6 +3,15 @@ import Button from './Button'
 
 const Statistics = ({good, neutral, bad, allFeedback}) => {
 
+  if(allFeedback == 0) {
+    return(
+      <div>
+        <h2>statistics</h2>
+        <p>No feedback given</p>
+      </div>
+    )
+  }
+
   const getAverageFeedbackScore = () => {
     return (good + -bad) / allFeedback || 0
   }
@@ -53,7 +62,6 @@ const App = () => {
         <Button onClick={handleGoodClick} text="good" />
         <Button onClick={handleNeutralClick} text="neutral" />
         <Button onClick={handleBadClick} text="bad" />
-      <h2>statistics</h2>
         <Statistics good={good} neutral={neutral} bad={bad} allFeedback={allFeedback} />
     </div>
   )
